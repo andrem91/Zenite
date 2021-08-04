@@ -1,6 +1,5 @@
 package br.com.zenite.zenite.model;
 
-import java.net.PasswordAuthentication;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,7 +32,7 @@ public class UsuarioModel {
 	
 	@NotBlank
 	@Size (min=6, max= 18)
-	private PasswordAuthentication senha;
+	private String senha;
 	
 	@OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ("usuario")
@@ -64,11 +63,11 @@ public class UsuarioModel {
 		this.email = email;
 	}
 
-	public PasswordAuthentication getSenha() {
+	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(PasswordAuthentication senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 	
