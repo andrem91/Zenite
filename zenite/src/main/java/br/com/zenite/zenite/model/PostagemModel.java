@@ -42,6 +42,12 @@ public class PostagemModel {
 	@JsonIgnoreProperties("postagem")
 	private CategoriaModel categoria;
 
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private UsuarioModel usuario;
+	
+	
+
 	public long getId() {
 		return id;
 	}
@@ -85,5 +91,12 @@ public class PostagemModel {
 	public void setCategoria(CategoriaModel categoria) {
 		this.categoria = categoria;
 	}
+	
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
 }
