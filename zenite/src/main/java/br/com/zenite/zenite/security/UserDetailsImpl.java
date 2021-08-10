@@ -5,6 +5,8 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import br.com.zenite.zenite.model.UsuarioModel;
+
 public class UserDetailsImpl implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
@@ -16,10 +18,9 @@ public class UserDetailsImpl implements UserDetails {
 		
 	}
 
-	public UserDetailsImpl(String userName, String password) {
-		super();
-		this.userName = userName;
-		this.password = password;
+	public UserDetailsImpl(UsuarioModel usuario) {
+		this.userName = usuario.getEmail();
+		this.password = usuario.getSenha();
 	}
 
 	@Override
