@@ -21,40 +21,38 @@ import br.com.zenite.zenite.service.UsuarioService;
 @RequestMapping("/usuario")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
-	
+
 	@Autowired
 	private UsuarioRepository repository;
-	
-	
-	@GetMapping
-	public ResponseEntity<List<UsuarioModel>> getAll(){
-		return ResponseEntity.ok(repository.findAll());
-	}
-	
-	@GetMapping ("/{id}")
-	public ResponseEntity<UsuarioModel> getById(@PathVariable long id){
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-		
-	}
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<UsuarioModel>> getByNome(@PathVariable String nome){
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
-	}
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
+	@GetMapping
+	public ResponseEntity<List<UsuarioModel>> getAll() {
+		return ResponseEntity.ok(repository.findAll());
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<UsuarioModel> getById(@PathVariable long id) {
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+
+	}
+
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<UsuarioModel>> getByNome(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	}
+
 	@PostMapping("/logar")
-	public ResponseEntity<UsuarioLogin> authentication (@RequestBody Optional<UsuarioLogin> usuario ){
-		return usuarioService.LogarUsuario(usuario)
-				.map(resp -> ResponseEntity.ok(resp))
+	public ResponseEntity<UsuarioLogin> authentication(@RequestBody Optional<UsuarioLogin> usuario) {
+		return usuarioService.LogarUsuario(usuario).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
-	
+
 	@PostMapping("/cadastrar")
-	public ResponseEntity <Optional<UsuarioModel>> post (@RequestBody UsuarioModel usuario){
+	public ResponseEntity<Optional<UsuarioModel>> post(@RequestBody UsuarioModel usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
 	}
-	
+
 }
-	
