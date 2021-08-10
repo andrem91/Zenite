@@ -16,40 +16,40 @@ import br.com.zenite.zenite.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	public Optional<UsuarioModel> cadastrarUsuario(UsuarioModel usuario) {
-		
-		if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
+
+		if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuario já existe.", null);
 		}
-		
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
+
 		String senhaEncoder = encoder.encode(usuario.getSenha());
-		
+
 		usuario.setSenha(senhaEncoder);
-		
+
 		return Optional.of(usuarioRepository.save(usuario));
 	}
-	
+
 	public Optional<UsuarioLogin> LogarUsuario(Optional<UsuarioLogin> usuarioLogin) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-		Optional<UsuarioModel> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getUsuario());
-		
-		if(usuario.isPresent()) {
-			if(encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
-				String auth = usuarioLogin.get().getUsuario() + ":" + usuarioLogin.get().getSenha();
+
+		Optional<UsuarioModel> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
+
+		if (usuario.isPresent()) {
+			if (encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
+				String auth = usuarioLogin.get().getEmail() + ":" + usuarioLogin.get().getSenha();
 				byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
 				String authHeader = "Basic " + new String(encodeAuth);
-				
+
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 				usuarioLogin.get().setToken(authHeader);
-				
+
 				return usuarioLogin;
 			}
 			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuário ou senha inválida.", null);

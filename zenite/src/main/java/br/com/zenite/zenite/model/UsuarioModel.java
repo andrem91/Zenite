@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -28,6 +29,7 @@ public class UsuarioModel {
 	
 	@NotBlank
 	@Size(min=2 ,max=80)
+	@Email
 	private String email;
 	
 	@NotBlank
