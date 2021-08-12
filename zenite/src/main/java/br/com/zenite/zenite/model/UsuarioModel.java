@@ -33,7 +33,7 @@ public class UsuarioModel {
 	private String email;
 	
 	@NotBlank
-	@Size (min=6, max= 100)
+	@Size (min=6)
 	private String senha;
 	
 	@OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE)
