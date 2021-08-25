@@ -52,9 +52,9 @@ public class CursoModel {
 	@JsonIgnoreProperties("curso")
 	private CategoriaModel categoria;
 
-	/*@ManyToOne
+	@ManyToOne
 	@JsonIgnoreProperties("curso")
-	private UsuarioProfessorModel professor;*/
+	private UsuarioProfessorModel professor;
 	
 	public long getId() {
 		return id;

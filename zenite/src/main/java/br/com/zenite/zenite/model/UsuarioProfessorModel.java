@@ -32,9 +32,9 @@ public class UsuarioProfessorModel {
     @JsonIgnoreProperties("usuarioProfessor")
     private List<PostagemModel> postagem;
 
-	/* @OneToMany (mappedBy = "usuarioProfessor", cascade = CascadeType.REMOVE)
+	@OneToMany (mappedBy = "usuarioProfessor", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ("usuarioProfessor")
-	private List<CursoModel> curso; */
+	private List<CursoModel> curso;
 
     public long getId() {
         return id;
