@@ -60,9 +60,7 @@ public class UsuarioProfessorService {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não existe.", null);
     }
 
-    /* CURSO */
-
-   /* public  */
+    /* CURSO ZENITE FAZENDO O DEPLOY*/
 
 
 }

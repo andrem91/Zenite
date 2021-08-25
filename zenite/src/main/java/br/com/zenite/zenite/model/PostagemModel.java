@@ -45,6 +45,10 @@ public class PostagemModel {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private UsuarioModel usuario;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private UsuarioProfessorModel usuarioProfessor;
 	
 	
 

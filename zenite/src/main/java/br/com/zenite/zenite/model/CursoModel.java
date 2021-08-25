@@ -3,7 +3,6 @@ package br.com.zenite.zenite.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,7 +41,7 @@ public class CursoModel {
 	}
 
 	@NotBlank
-	private List<String> aulas = new ArrayList<>();
+	private ArrayList aulas;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
@@ -54,7 +53,7 @@ public class CursoModel {
 
 	@ManyToOne
 	@JsonIgnoreProperties("curso")
-	private UsuarioProfessorModel professor;
+	private UsuarioProfessorModel usuarioProfessor;
 	
 	public long getId() {
 		return id;
@@ -88,11 +87,11 @@ public class CursoModel {
 		this.data = data;
 	}
 
-	public List<String> getAulas() {
+	public ArrayList getAulas() {
 		return aulas;
 	}
 
-	public void setAulas(List<String> aulas) {
+	public void setAulas(ArrayList aulas) {
 		this.aulas = aulas;
 	}
 
