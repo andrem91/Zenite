@@ -32,6 +32,8 @@ public class UsuarioModel {
 	@Email
 	private String email;
 	
+	private String foto;
+	
 	@NotBlank
 	@Size (min=6)
 	private String senha;
@@ -63,6 +65,14 @@ public class UsuarioModel {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getSenha() {

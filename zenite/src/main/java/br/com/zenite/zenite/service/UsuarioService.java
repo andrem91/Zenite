@@ -47,9 +47,10 @@ public class UsuarioService {
 				String authHeader = "Basic " + new String(encodeAuth);
 
 				usuarioLogin.get().setNome(usuario.get().getNome());
-				usuarioLogin.get().setSenha(usuario.get().getSenha());
+				usuarioLogin.get().setId(usuario.get().getId());
 				usuarioLogin.get().setToken(authHeader);
-
+				usuarioLogin.get().setFoto(usuario.get().getFoto());
+			
 				return usuarioLogin;
 			}
 			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuário ou senha inválida.", null);

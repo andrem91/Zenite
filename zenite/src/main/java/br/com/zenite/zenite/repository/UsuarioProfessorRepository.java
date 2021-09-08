@@ -12,7 +12,9 @@ import java.util.Optional;
 public interface UsuarioProfessorRepository extends JpaRepository <UsuarioProfessorModel, Long> {
 
    public List<CursoModel> findAllByCursoContainingIgnoreCase(String curso );
+   
+   public List<UsuarioProfessorModel> findAllByNomeContainingIgnoreCase(String nome);
 
-    public Optional<UsuarioProfessorModel> findByEmail(String usuario);
+   public Optional<UsuarioProfessorModel> findByEmail(String usuario);
 
 }

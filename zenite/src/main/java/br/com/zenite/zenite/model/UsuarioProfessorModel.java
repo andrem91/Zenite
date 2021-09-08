@@ -16,16 +16,18 @@ public class UsuarioProfessorModel {
     private long id;
 
     @NotBlank
-    @Size(min=2, max=80)
+    @Size(min = 2, max = 80)
     private String nome;
 
     @NotBlank
-    @Size(min=2, max=80)
+    @Size(min = 2, max = 80)
     @Email
     private String email;
+    
+    private String foto;
 
     @NotBlank
-    @Size (min=6)
+    @Size (min = 6)
     private String senha;
 
     @OneToMany(mappedBy = "usuarioProfessor", cascade = CascadeType.REMOVE)
@@ -59,8 +61,25 @@ public class UsuarioProfessorModel {
     public void setEmail(String email) {
         this.email = email;
     }
+    
 
-    public String getSenha() {
+    public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public List<CursoModel> getCurso() {
+		return curso;
+	}
+
+	public void setCurso(List<CursoModel> curso) {
+		this.curso = curso;
+	}
+
+	public String getSenha() {
         return senha;
     }
 

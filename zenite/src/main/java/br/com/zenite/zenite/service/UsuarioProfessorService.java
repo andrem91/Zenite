@@ -18,7 +18,6 @@ public class UsuarioProfessorService {
     @Autowired
     private UsuarioProfessorRepository repository;
 
-
     /* CADASTRAR */
     public Optional<UsuarioProfessorModel> cadastrarUsuarioProfessor (UsuarioProfessorModel usuarioProfessorCadastrar) {
 
@@ -50,17 +49,14 @@ public class UsuarioProfessorService {
                 String authHeader = "Basic " + new String(encodeAuth);
 
                 usuarioProfessorLogin.get().setNome(usuarioProfessor.get().getNome());
-                usuarioProfessorLogin.get().setSenha(usuarioProfessor.get().getSenha());
+                usuarioProfessorLogin.get().setId(usuarioProfessor.get().getId());
+                usuarioProfessorLogin.get().setFoto(usuarioProfessor.get().getFoto());
                 usuarioProfessorLogin.get().setToken(authHeader);
-
+                
                 return usuarioProfessorLogin;
             }
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuário ou senha inválida.", null);
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não existe.", null);
     }
-
-    /* CURSO ZENITE FAZENDO O DEPLOY*/
-
-
 }

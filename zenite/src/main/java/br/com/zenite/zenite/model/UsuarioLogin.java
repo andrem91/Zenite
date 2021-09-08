@@ -1,10 +1,14 @@
 package br.com.zenite.zenite.model;
 
 public class UsuarioLogin {
+	
+	private long id;
 
 	private String nome;
 
 	private String email;
+	
+	private String foto;
 
 	private String senha;
 
@@ -12,6 +16,14 @@ public class UsuarioLogin {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public void setNome(String nome) {
@@ -24,6 +36,15 @@ public class UsuarioLogin {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getSenha() {
@@ -41,4 +62,5 @@ public class UsuarioLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	
 }
