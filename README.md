@@ -66,3 +66,4 @@ linkedIn: https://www.linkedin.com/in/marlon-silva-43075a184/
 *Tomas Alric*
 
 github: https://github.com/TomasAlric
+linkedIn: https://www.linkedin.com/in/tomas-alric/
